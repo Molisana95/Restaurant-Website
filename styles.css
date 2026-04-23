@@ -12,9 +12,11 @@
     --big-font: clamp(2.5rem, 4vw, 3rem);
     --medium-font: clamp(1.5rem, 4vw, 2.5rem);
     --small-font: clamp(1rem, 3vw, 1.5rem);
+    --dark-grey: #333;
     --white: #fff;
     --light-yellow: #fff1d3;
     --dark-red: rgb(131, 49, 49);
+    --orangered: rgba(250, 216, 184, 0.774);
 }
 
 html {
@@ -23,6 +25,7 @@ html {
 
 .italic {
     font-style: italic;
+    color: var(--dark-grey);
 }
 
 img {
@@ -52,10 +55,6 @@ nav ul {
     padding: 0.5rem 1rem;
 }
 
-.close-btn {
-    display: none;
-}
-
 .home {
     justify-content: flex-start;
 }
@@ -71,11 +70,8 @@ a {
     gap: 2rem;
 }
 
-.home, .others li, .close-btn {
-    transition: background-color 0.2s linear, color 0.5s smooth;
-}
 
-.home:hover, .others li:hover, .close-btn:hover {
+.home:hover, .others li:hover {
     background-color: var(--light-yellow);
     border-radius: 10px;
     padding: 0 1rem;
@@ -84,6 +80,10 @@ a {
 
 .home:hover a, .others li:hover a{
     color: var(--dark-red);
+}
+
+.home, .others li {
+     transition: 0.3s ease;
 }
 
 h1 {
@@ -97,7 +97,6 @@ h1 {
 
 h2 {
     font-size: var(--big-font);
-    text-align: center;
     color: var(--light-yellow);
     letter-spacing: 0.3rem;
     -webkit-text-stroke: 1px rgba(184, 60, 38, 0.589);
@@ -105,7 +104,6 @@ h2 {
 
 h3 {
     font-size: var(--small-font);
-    text-align: center;
 }
 
 .background {
@@ -128,30 +126,43 @@ h3 {
     scroll-margin-top: 3rem;
 }
 
+/* Menu Section - used a mix of minmax and min-1fr for a better responsive design */
 .menu-card-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0 10rem;
-    background-color: rgba(255, 241, 211, 0.8);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: 2rem;
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--light-yellow);
 }
 
 .menu-intro {
     padding: 3rem 0;
+    text-align: center;
 }
 
 .menu-card {
     display: flex;
     flex-direction: column;
-    padding: 1rem 5rem;
+    padding: 1rem 2rem;
     border-radius: 10px;
-    text-align: center;
+    text-align: left;
     gap: 1rem;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    transition: 0.4s ease;
+}
+
+.menu-card:hover {
+    transform: scale(1.05);
+    box-shadow: rgb(199, 115, 55) 0 3px 10px -1px;
+    background-color: var(--orangered);
 }
 
 .menu-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
     border-radius: 10px;
 }
 
@@ -167,12 +178,13 @@ h3 {
 
 .mobile-menu-btn {
     position: absolute;
+    z-index: 101;
     top: 1rem;
     left: 1rem;
     display: inline-block;
     color: var(--light-yellow);
     font-size: var(--gigantic-font);
-
+    transition: 0.3s ease;
 }
 
 .nav-container {
@@ -186,15 +198,6 @@ h3 {
 .nav-container.active {
     display: block;
 }
-
-.close-btn {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    display: inline-block;
-    color: var(--light-yellow);
-    font-size: var(--gigantic-font);
-} 
 
 nav ul, .others {
     flex-direction: column;
@@ -212,10 +215,6 @@ nav ul, .others {
     border-radius: 10px;
     padding: 0.5rem 1rem;
     cursor: pointer;
-}
-
-.close-btn:hover {
-    color: var(--dark-red);
 }
 
 .home:hover a, .others li:hover a, .mobile-menu-btn:hover {
@@ -243,8 +242,9 @@ h2 {
 }
 
 .menu-card-container {
-    display: block;
-    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 2rem 1rem;
     gap: 1rem;
 }
 

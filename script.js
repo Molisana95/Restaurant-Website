@@ -1,13 +1,21 @@
 const mobileMenu = document.querySelector('.mobile-menu-btn');
-const closureBtn = document.querySelector('.close-btn');
 const navContainer = document.querySelector('.nav-container');
 const navLinks = document.querySelectorAll('.nav-container a');
 
 const toggleMenu = () => {
-    navContainer.classList.toggle('active');
+
+    if (navContainer.classList.contains('active')) {
+        navContainer.classList.remove('active');
+        mobileMenu.textContent = '☰';
+        console.log('Menu opened');
+    } 
+    else {
+        navContainer.classList.add('active');
+        mobileMenu.textContent = 'X';
+        console.log('Menu closed');
+    } 
 }
 mobileMenu.addEventListener('click', toggleMenu);
-closureBtn.addEventListener('click', toggleMenu);
 
 navLinks.forEach(link => {
     link.addEventListener("click", () => {
