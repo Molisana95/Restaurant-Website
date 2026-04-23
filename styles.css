@@ -10,10 +10,19 @@
     font-family: "Sekuya", system-ui;
     --super-big-font: clamp(3rem, 6vw, 4.5rem);
     --big-font: clamp(2.5rem, 4vw, 3rem);
-    --medium-font: 1.5rem;
+    --medium-font: clamp(1.5rem, 4vw, 2.5rem);
+    --small-font: clamp(1rem, 3vw, 1.5rem);
     --white: #fff;
     --light-yellow: #fff1d3;
     --dark-red: rgb(131, 49, 49);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.italic {
+    font-style: italic;
 }
 
 img {
@@ -39,7 +48,7 @@ nav ul {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    font-size: var(--medium-font);
+    font-size: var(--small-font);
     padding: 0.5rem 1rem;
 }
 
@@ -87,15 +96,21 @@ h1 {
 }
 
 h2 {
-    font-size: var(--medium-font);
+    font-size: var(--big-font);
     text-align: center;
     color: var(--light-yellow);
     letter-spacing: 0.3rem;
     -webkit-text-stroke: 1px rgba(184, 60, 38, 0.589);
 }
 
+h3 {
+    font-size: var(--small-font);
+    text-align: center;
+}
+
 .background {
     height: 100vh;
+    width: auto;
     top: 0;
     background-image: 
     linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
@@ -109,6 +124,36 @@ h2 {
     align-items: center;
 }
 
+#menu, #contact, #about, #home{
+    scroll-margin-top: 3rem;
+}
+
+.menu-card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10rem;
+    background-color: rgba(255, 241, 211, 0.8);
+}
+
+.menu-intro {
+    padding: 3rem 0;
+}
+
+.menu-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 5rem;
+    border-radius: 10px;
+    text-align: center;
+    gap: 1rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.menu-card img {
+    border-radius: 10px;
+}
 
 @media screen and (max-width: 768px) {
 
@@ -116,8 +161,8 @@ h2 {
     --gigantic-font: clamp(3rem, 6vw, 4.5rem);
     --super-big-font: clamp(2rem, 6vw, 3.5rem);
     --big-font: clamp(1.5rem, 4vw, 2.5rem);
-    --medium-font: 1rem;
-    
+    --medium-font: clamp(1.25rem, 3vw, 1.5rem);
+    --small-font: clamp(1rem, 3vw, 1.25rem);
 }
 
 .mobile-menu-btn {
@@ -177,6 +222,10 @@ nav ul, .others {
     color: var(--dark-red);
 }
 
+#menu, #contact, #about, #home{
+    scroll-margin-top: 0;
+}
+
 h1 {
     font-size: var(--super-big-font);
     letter-spacing: 0.2rem;
@@ -189,8 +238,14 @@ h2 {
 
 .background {
     height: 100vh;
-    width: 100vw;
+    width: auto;
     overflow: hidden;
+}
+
+.menu-card-container {
+    display: block;
+    padding: 0 2rem;
+    gap: 1rem;
 }
 
 }
