@@ -20,5 +20,6 @@ mobileMenu.addEventListener('click', toggleMenu);
 navLinks.forEach(link => {
     link.addEventListener("click", () => {
         navContainer.classList.remove('active');
+        mobileMenu.textContent = '☰';
     });
 });
